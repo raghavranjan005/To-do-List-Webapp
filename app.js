@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+var port = process.env.PORT || 8080;
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 
@@ -143,4 +144,6 @@ app.route("/remove/:id").get((req, res) => {
     });
     });
 
-app.listen(4000, () => console.log("Server Up and running"));
+    app.listen(port, function() {
+        console.log('Our app is running on http://localhost:' + port);
+    });

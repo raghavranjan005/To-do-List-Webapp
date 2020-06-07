@@ -10,23 +10,30 @@ integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7
 <div class="todo-container">
 <h2>To-Do List</h2>
 <div class="todo">
-<form action="" method="POST" class="todo-header">
-<input type="text" name="content">
-<button type="submit"><span class="fas fa-plus"></span></button>
-</form>
+
+    <form action="/" method="POST" class="todo-header">
+        <label style="font-size: larger; font-family: 'Candal', sans-serif;">Task</label><br>
+        <input type="text" name="content">
+        <label style="font-size: larger; font-family: 'Candal', sans-serif;">Due Date</label><br>
+        <input type="date" name="due">
+        
+        <button type="submit"><span class="fas fa-plus"></span></button>
+        </form>
+
 <ul class="todo-list">
 <% todoTasks.forEach(details => { %>
 <% if (details._id == idTask) { %>
 <li class="todo-list-item">
 <form action="/edit/<%= details._id %>" method="POST">
 <input type="text" value="<%= details.content %>" name="content">
+<input type="date" value="<%= details.due %>" name="due">
 <button type="submit">Confirm</button>
 <a href="/" class="cancel">Cancel</a>
 </form>
 </li>
 <% } else { %>
 <li class="todo-list-item">
-<div class="todo-list-item-name"><%= details.content %></div>
+<div class="todo-list-item-name"><%= details.content %><br>Due:<%= details.due %></div>
 <a href="/edit/<%= details._id %>" class="edit"> <span class="fas fa-edit"></span>
 </a>
 <a href="/remove/<%= details._id %>" class="remove"> <span class="fas fa-times"></span>

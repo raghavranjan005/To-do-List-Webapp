@@ -1,12 +1,13 @@
 const mongoose = require('mongoose');
-const todoTaskSchema = new mongoose.Schema({
-content: {
-type: String,
-required: true
-},
-date: {
-type: Date,
-default: Date.now
-}
-})
+var todoTaskSchema = new mongoose.Schema({
+
+   content:{type:String},
+   due:{type:String},
+   status:{type:String},
+   label:{type:String}
+
+
+});
+
+
 module.exports = mongoose.model('TodoTask',todoTaskSchema);

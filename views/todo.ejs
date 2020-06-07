@@ -7,19 +7,56 @@
 integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 </head>
 <body>
+
+
+  <div class="nav" style="background-color: black;">
+      <ul>
+  <li style="font-size:xx-large;padding-left: 0.2cm;padding-right:0.2cm;margin-top:0.2cm; margin-left:0.2cm;box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.2), 6px 6px 20px 20px rgba(0, 0, 0, 0.19);align-self: center;"><a href="#home">To-do List</a></li>
+  <li style="font-size:xx-large;padding-left: 0.2cm;padding-right:0.2cm;margin-top:0.2cm; margin-left:0.2cm;box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.2), 6px 6px 20px 20px rgba(0, 0, 0, 0.19);align-self: center;float: right;"><a href="#SignUp">SignUp</a></li>
+  <li style="font-size:xx-large;padding-left: 0.2cm;padding-right:0.2cm;margin-top:0.2cm; margin-left:0.2cm;box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.2), 6px 6px 20px 20px rgba(0, 0, 0, 0.19);align-self: center;float: right;"><a href="#Login">Login</a></li>
+</ul>
+  </div>
+
+
+
+
 <div class="todo-container">
 <h2>To-Do List</h2>
 <div class="todo">
+
 <form action="/" method="POST" class="todo-header">
-<input type="text" name="content">
-<button type="submit"><span class="fas fa-plus"></span></button>
+<label style="font-size: larger; font-family: 'Candal', sans-serif;">Task</label><br>
+<input id="content" type="text" name="content">
+<label style="font-size: larger; font-family: 'Candal', sans-serif;">Due Date</label><br>
+<input id="due" type="date" name="due"><br><br>
+
+<label for="status" style="font-size: larger; font-family: 'Candal', sans-serif;">Status</label>
+<select name="status" id="status" style="width:2cm;height:0.7cm;border-radius: 5px;background-color: #fff;font-size: small; font-family: 'Candal', sans-serif;">
+  <option value="New">New</option>
+  <option value="In Progress">In Progress</option>
+  <option value="Completed">Completed</option>
+</select>
+&nbsp;&nbsp;&nbsp;
+<label for="label" style="font-size: larger; font-family: 'Candal', sans-serif;">Label</label>
+<select name="label" id="label" style="width:3cm;height:0.7cm;border-radius: 5px;background-color: #fff;font-size: small; font-family: 'Candal', sans-serif;">
+    <option value="Personal">Personal</option>
+    <option value="Work">Work</option>
+    <option value="Shopping">Shopping</option>
+    <option value="Others">Others</option>
+  </select>
+<br><br>
+<input type="submit" value="Add Task" style="width:3cm; height:1cm; background-color:#3CEB11;color:white; "></button>
 </form>
+
+
+  
+
 
 <ul class="todo-list">
     <ul class="todo-list">
         <% todoTasks.forEach(details => { %>
         <li class="todo-list-item">
-        <div class="todo-list-item-name"><%= details.content %></div>
+        <div class="todo-list-item-name"><%= details.content %><br>Due:&nbsp;<%= details.due %><br>Status:&nbsp;<%= details.status %><br>Label:&nbsp;<%= details.label %></div>
         <a href="/edit/<%= details._id %>" class="edit">
         <span class="fas fa-edit"></span>
         </a>

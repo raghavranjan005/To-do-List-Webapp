@@ -4,7 +4,7 @@
     box-sizing: border-box;
     }
     body {
-    background: #e27442;
+    background-color: #21087ad8;
     }
     .todo-container {
     color: white;
@@ -19,9 +19,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.2), 6px 6px 20px 20px rgba(0, 0, 0, 0.19);
+    
     }
     .todo {
     width: 400px;
+    
     }
     .todo-container h2 {
     padding: 10px;
@@ -103,3 +106,33 @@
     cursor:pointer;
     text-decoration: none;
     }
+
+
+    .nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        background-color: #333;
+      }
+      
+
+    .nav li {
+        float: left;
+      }
+      
+    .nav li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+      
+      /* Change the link color to #111 (black) on hover */
+    .nav li a:hover {
+        background-color:rgba(0, 0, 0, 0.3);
+      }
+
+    .nav.active {
+        background-color: #4CAF50;
+      }

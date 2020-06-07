@@ -3,7 +3,7 @@ const app = express();
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 
-const TodoTask = require("./models/TodoTask");
+var TodoTask = require("./models/TodoTask");
 
 
 dotenv.config();
@@ -27,11 +27,18 @@ app.get("/", (req, res) => {
     res.render("todo.ejs", { todoTasks: tasks });
     });
     });
+
+    
+
+
     
 //POST METHOD
 app.post('/',async (req, res) => {
     const todoTask = new TodoTask({
-    content: req.body.content
+    content: req.body.content,
+    due:req.body.due,
+    status: req.body.status,
+    label:req.body.label
     });
     try {
     await todoTask.save();
@@ -40,6 +47,7 @@ app.post('/',async (req, res) => {
     res.redirect("/");
     }
     });
+
     
 
 //UPDATE
@@ -53,7 +61,7 @@ res.render("todoEdit.ejs", { todoTasks: tasks, idTask: id });
 })
 .post((req, res) => {
 const id = req.params.id;
-TodoTask.findByIdAndUpdate(id, { content: req.body.content }, err => {
+TodoTask.findByIdAndUpdate(id, { content: req.body.content, due:req.body.due, status:req.body.status ,label:req.body.status }, err => {
 if (err) return res.send(500, err);
 res.redirect("/");
 });
